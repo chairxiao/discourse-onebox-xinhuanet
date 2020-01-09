@@ -1,5 +1,10 @@
 # frozen_string_literal: true
+# name: xinhuanet-discourse-onebox
+# about: For generating pretty oneboxes for xinhuanet.com
+# version: 0.1
+# authors: dengzi
 
+Onebox = Onebox
 module Onebox
     module Engine
       class XinhuaNetOnebox
