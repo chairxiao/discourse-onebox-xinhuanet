@@ -10,6 +10,7 @@ module Onebox
   module Engine
     class XinhuaNetOnebox
       include Engine
+      include HTML
 
       matches_regexp(/^(http?:\/\/)?(www\.)?xinhuanet\.com\/(.)+\/?$/)
 
