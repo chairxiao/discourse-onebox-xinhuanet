@@ -7,32 +7,38 @@
 Onebox = Onebox
 
 module Onebox
-  module Engine
-    class XinhuaNetOnebox
-      include Engine
-      include HTML
+	module Engine
+		class XinhuaNetOnebox
+			include Engine
+			include HTML
 
-      matches_regexp(/^(http?:\/\/)?(www\.)?xinhuanet\.com\/(.)+\/?$/)
+			matches_regexp(/^(http?:\/\/)?(www\.)?xinhuanet\.com\/(.)+\/?$/)
 
-      def to_html
-        result ={
-          url: @url,
-          title: raw.css('title').text.sub(/-新华网/, '').strip(),
-          image: raw.css('.net-logo img').first['src'],
-          description: raw.css('meta[name=description]').first['content']
-        }
+			def to_html
+				result ={
+					url: @url,
+					title: raw.css('title').text.sub(/-新华网/, '').strip(),
+					image: raw.css('.net-logo img').first['src'],
+					description: raw.css('meta[name=description]').first['content']
+				}
 
-        <<-HTML
-        <div class="onebox">
-          <a href="#{@url}">
-            <h3>#{result[:title]}</h3>
-            <img src="#{result[:image]}" />
+				<<-HTML
+				<aside class="onebox xinhuanet">
+				  <header class="source">
+				    <a href="#{@url}">新华网</a>
+			  	</header>
+				  <article class="onebox-body">
+			    	<h3>
+				      <a href="#{@url}" target="_blank" rel="nofollow ugc noopener">
+				        #{result[:title]}
+				      </a>
+				    </h3>
             <p>#{result[:description]}</p>
-          </a>
-      </div>
-      HTML
-      
-      end
-    end
-  end
+            </article>
+           </aside> 
+        HTML
+        
+			end
+		end
+	end
 end
