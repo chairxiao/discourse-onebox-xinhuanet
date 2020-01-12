@@ -14,14 +14,14 @@ module Onebox
 
 			matches_regexp(/^(http?:\/\/)?(www\.)?xinhuanet\.com\/(.)+\/?$/)
 
-			def to_html
-				result ={
-					url: @url,
-					title: raw.css('title').text.sub(/-新华网/, '').strip(),
-					image: raw.css('.net-logo img').first['src'],
-					description: raw.css('meta[name=description]').first['content']
-				}
-
+      def to_html
+          result ={
+            url: @url,
+            title: raw.css('title').text.sub(/-新华网/, '').strip(),
+            image: raw.css('.net-logo img').first['src'],
+            description: raw.css('meta[name=description]').first['content']
+          }
+  
 				<<-HTML
 				<aside class="onebox xinhuanet">
 				  <header class="source">
